@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>employee.sh — Pitch Deck</title>
+<title>Bundl AI — Pitch Deck</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Russo+One&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
   :root {
+    --font-display: 'Plus Jakarta Sans', sans-serif;
     --ink: #0a0a0a;
     --paper: #f5f2ec;
     --cream: #ede9e0;
@@ -164,7 +167,7 @@
     text-transform: uppercase;
     color: rgba(255,255,255,0.35);
   }
-  .syne { font-family: "Russo One", sans-serif; font-weight: 400; font-style: normal; }
+  .syne { font-family: var(--font-display); font-weight: 700; font-style: normal; letter-spacing: 0.01em; }
   .mono { font-family: 'DM Mono', monospace; }
 
   /* ─────────────────────────────────────────
@@ -196,6 +199,15 @@
     background: radial-gradient(circle, rgba(60,235,240,0.06) 0%, transparent 70%);
     pointer-events: none;
   }
+  .s1-logo {
+    position: absolute;
+    top: 52px;
+    right: 80px;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.35);
+  }
   .s1-tagline {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -205,12 +217,12 @@
     margin-bottom: 28px;
   }
   .s1-headline {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-weight: 800;
     font-size: 86px;
     line-height: 0.95;
     color: #fff;
-    letter-spacing: -0.015em;
+    letter-spacing: 0.01em;
   }
   .s1-headline span {
     color: var(--accent);
@@ -240,11 +252,11 @@
   }
   .s1-raise strong {
     display: block;
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 22px;
     font-weight: 700;
     color: rgba(255,255,255,0.7);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     margin-top: 4px;
   }
   .s1-grid {
@@ -283,7 +295,7 @@
     background: radial-gradient(circle, rgba(200,240,60,0.1) 0%, transparent 70%);
   }
   .s2-big-num {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 160px;
     font-weight: 800;
     line-height: 1;
@@ -291,16 +303,16 @@
     position: absolute;
     top: 20px;
     left: 40px;
-    letter-spacing: -0.03em;
+    letter-spacing: 0;
     pointer-events: none;
   }
   .s2-left h2 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 42px;
     font-weight: 800;
     color: #fff;
     line-height: 1.1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     position: relative;
   }
   .s2-left h2 em {
@@ -346,7 +358,7 @@
   }
   .pain-text strong {
     display: block;
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 14px;
     font-weight: 700;
     color: var(--ink);
@@ -375,10 +387,10 @@
     margin-bottom: 48px;
   }
   .s3-top h2 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 48px;
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
   }
   .s3-top h2 em {
     font-style: normal;
@@ -416,7 +428,7 @@
     margin-bottom: 16px;
   }
   .s3-card h3 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 16px;
     font-weight: 700;
     color: #fff;
@@ -449,7 +461,7 @@
     justify-content: space-between;
   }
   .s3-bottom p {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 16px;
     font-weight: 700;
     color: var(--dark);
@@ -485,11 +497,11 @@
     margin-bottom: 36px;
   }
   .s4-header h2 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-weight: 800;
     font-size: 44px;
     color: #fff;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     line-height: 1.1;
   }
   .s4-header h2 em {
@@ -524,7 +536,7 @@
     font-size: 18px;
   }
   .emp-card .name {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 13px;
     font-weight: 700;
     color: #fff;
@@ -574,7 +586,7 @@
     margin-bottom: 6px;
   }
   .flow-step .step-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 13px;
     font-weight: 700;
     color: #fff;
@@ -600,10 +612,10 @@
     margin-bottom: 44px;
   }
   .s5-header h2 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
   }
   .stats-row {
     display: grid;
@@ -632,12 +644,12 @@
   }
   .stat-box:hover::before { transform: scaleX(1); }
   .stat-box .s-val {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 48px;
     font-weight: 800;
     line-height: 1;
     color: var(--ink);
-    letter-spacing: -0.015em;
+    letter-spacing: 0.01em;
   }
   .stat-box .s-unit {
     font-size: 24px;
@@ -696,11 +708,11 @@
     background: radial-gradient(circle, rgba(200,240,60,0.07) 0%, transparent 65%);
   }
   .s6-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 800;
     color: #fff;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     margin-bottom: 40px;
   }
   .model-grid {
@@ -724,12 +736,12 @@
     margin-bottom: 12px;
   }
   .model-box .m-val {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 36px;
     font-weight: 800;
     color: var(--accent);
     line-height: 1;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     margin-bottom: 8px;
   }
   .model-box .m-desc {
@@ -778,11 +790,11 @@
     to { width: 82%; }
   }
   .bar-val {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 22px;
     font-weight: 800;
     color: var(--accent);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
   }
   .bar-sub {
     font-family: 'DM Mono', monospace;
@@ -801,10 +813,10 @@
     justify-content: center;
   }
   .s7-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     margin-bottom: 40px;
   }
   .market-layout {
@@ -848,7 +860,7 @@
     left: 60px; bottom: 0;
   }
   .m-circle .c-val {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 18px;
     font-weight: 800;
     color: var(--ink);
@@ -881,7 +893,7 @@
     margin-top: 1px;
   }
   .fact-row .f-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 14px;
     font-weight: 700;
     color: #fff;
@@ -913,11 +925,11 @@
     background: radial-gradient(circle, rgba(60,235,240,0.05) 0%, transparent 65%);
   }
   .s8-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 800;
     color: #fff;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     margin-bottom: 40px;
   }
   .s8-title em {
@@ -943,7 +955,7 @@
     margin-bottom: 10px;
   }
   .gtm-block h3 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 17px;
     font-weight: 700;
     color: #fff;
@@ -979,7 +991,7 @@
     margin-bottom: 8px;
   }
   .r-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 13px;
     font-weight: 700;
     color: #fff;
@@ -1033,11 +1045,11 @@
     position: relative;
   }
   .s9-headline {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 56px;
     font-weight: 800;
     line-height: 1.05;
-    letter-spacing: -0.015em;
+    letter-spacing: 0.01em;
     color: #fff;
     max-width: 820px;
     position: relative;
@@ -1070,7 +1082,7 @@
   }
   .pillar .p-icon { font-size: 22px; margin-bottom: 8px; }
   .pillar .p-label {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 13px;
     font-weight: 700;
     color: #fff;
@@ -1092,10 +1104,10 @@
     justify-content: center;
   }
   .s10-title {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 44px;
     font-weight: 800;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     margin-bottom: 40px;
   }
   .team-grid {
@@ -1128,7 +1140,7 @@
     margin-bottom: 16px;
   }
   .tc-name {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 18px;
     font-weight: 800;
     color: #fff;
@@ -1193,12 +1205,12 @@
     margin-bottom: 20px;
   }
   .s11-amount {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 80px;
     font-weight: 800;
     color: #fff;
     line-height: 1;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.01em;
     position: relative;
   }
   .s11-amount span {
@@ -1220,7 +1232,7 @@
     gap: 0;
   }
   .s11-right h3 {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 15px;
     font-weight: 700;
     color: var(--muted);
@@ -1237,17 +1249,17 @@
   }
   .use-item:last-child { border-bottom: none; }
   .use-pct {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 28px;
     font-weight: 800;
     color: var(--ink);
-    letter-spacing: -0.01em;
+    letter-spacing: 0.015em;
     min-width: 64px;
     line-height: 1;
   }
   .use-details strong {
     display: block;
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 14px;
     font-weight: 700;
     color: var(--ink);
@@ -1299,11 +1311,11 @@
     background-size: 60px 60px;
   }
   .s12-headline {
-    font-family: "Russo One", sans-serif;
+    font-family: var(--font-display);
     font-size: 62px;
     font-weight: 800;
     line-height: 1;
-    letter-spacing: -0.015em;
+    letter-spacing: 0.01em;
     color: #fff;
     position: relative;
     margin-bottom: 20px;
@@ -1364,9 +1376,10 @@
   <!-- SLIDE 01: COVER -->
   <div class="slide active" id="s1">
     <div class="s1-grid"></div>
+    <img class="s1-logo" src="favicon.png" alt="Bundl AI">
     <div class="s1-tagline">The AI Workforce for India's SMBs</div>
     <div class="s1-headline">
-      employ<span>ee</span><br>.sh
+      Bundl <span>AI</span>
     </div>
     <div class="s1-sub">
       We deploy AI employees into businesses to run core operations — hiring, accounting, customer growth — on autopilot.
@@ -1378,7 +1391,7 @@
       </div>
       <div style="text-align:right;">
         <div class="label-light" style="margin-bottom:4px;">Confidential</div>
-        <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);">2026 · employee.sh</div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,0.15);">2026 · Bundl AI</div>
       </div>
     </div>
   </div>
@@ -1529,7 +1542,7 @@
   <div class="slide" id="s5">
     <div class="s5-header">
       <div class="label" style="margin-bottom:10px;">04 / Traction</div>
-      <h2 class="syne" style="font-size:44px;font-weight:800;letter-spacing:-0.01em;">Early signal is <em style="font-style:normal;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;">strong</em></h2>
+      <h2 class="syne" style="font-size:44px;font-weight:800;letter-spacing:0.015em;">Early signal is <em style="font-style:normal;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px;">strong</em></h2>
     </div>
     <div class="stats-row">
       <div class="stat-box">
@@ -1637,7 +1650,7 @@
           <div class="f-icon">🎯</div>
           <div>
             <div class="f-title">SMBs prefer done-for-you</div>
-            <div class="f-sub">They don't want another SaaS tool. They want the outcome. employee.sh is the outcome.</div>
+            <div class="f-sub">They don't want another SaaS tool. They want the outcome. Bundl AI is the outcome.</div>
           </div>
         </div>
       </div>
@@ -1791,16 +1804,16 @@
   <div class="slide" id="s12">
     <div class="s12-grid"></div>
     <div class="s12-headline">
-      The back office<br>runs on <em>employee.sh</em>
+      The back office<br>runs on <em>Bundl AI</em>
     </div>
     <div class="s12-sub">
       India's 63 million SMBs are about to get their first real operations team. We're building it — one AI employee at a time.
     </div>
     <div class="s12-contact">
       <a class="contact-pill primary" href="mailto:krish@bundl.ai">krish@bundl.ai</a>
-      <a class="contact-pill secondary" href="https://employee.sh" target="_blank" rel="noopener noreferrer">employee.sh</a>
+      <a class="contact-pill secondary" href="https://bundl.ai" target="_blank" rel="noopener noreferrer">bundl.ai</a>
     </div>
-    <div class="s12-logo">employee.sh · Confidential · 2025</div>
+    <div class="s12-logo">Bundl AI · Confidential · 2026</div>
   </div>
 
 </div>
