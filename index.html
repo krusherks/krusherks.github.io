@@ -118,7 +118,7 @@
     }
 
     /* NAV */
-    nav {
+    .site-nav {
       position: fixed; top: 0; left: 0; right: 0;
       z-index: 100;
       display: flex;
@@ -556,15 +556,63 @@
       border-top: 1px solid var(--dim);
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-end;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     footer .logo {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+
+    .footer-owner {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 0.06em;
       color: var(--grey);
+      line-height: 1.5;
     }
+    .footer-owner a {
+      color: var(--grey);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .footer-owner a:hover { color: var(--white); }
+
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--grey);
+      text-decoration: none;
+      text-transform: lowercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
 
     footer .copy {
       font-family: var(--mono);
@@ -693,8 +741,8 @@
 
     /* MOBILE */
     @media (max-width: 768px) {
-      nav { padding: 16px 20px; }
-      nav > div { gap: 12px; }
+      .site-nav { padding: 16px 20px; }
+      .site-nav > div { gap: 12px; }
       .theme-toggle { padding: 6px 10px; font-size: 10px; }
       .hero { padding: 100px 20px 60px; }
       .hero-headline { font-size: 44px; }
@@ -709,7 +757,8 @@
       .cta-email-form { flex-direction: column; }
       .cta-submit { width: 100%; padding: 14px; }
       .ticker-section { overflow: hidden; }
-      footer { padding: 32px 20px; flex-direction: column; gap: 16px; text-align: center; }
+      footer { padding: 32px 20px; flex-direction: column; gap: 20px; text-align: center; align-items: center; }
+      .footer-meta { align-items: center; }
       .hero-scroll-hint { display: none; }
     }
   </style>
@@ -720,8 +769,8 @@
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAV -->
-  <nav>
-    <a href="/" class="nav-logo"><img src="favicon.png" alt="" width="28" height="28" />Bundl AI</a>
+  <nav class="site-nav" aria-label="Main">
+    <a href="https://bundl.ai/" class="nav-logo"><img src="favicon.png" alt="" width="28" height="28" />Bundl AI</a>
     <div style="display:flex;align-items:center;gap:20px;">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
         <span class="toggle-icon">◐</span>
@@ -926,8 +975,17 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="logo">Bundl AI</span>
-    <span class="copy">© 2026 Bundl AI</span>
+    <div class="footer-brand">
+      <span class="logo">Bundl AI</span>
+      <span class="footer-owner">Bundl AI is owned and operated by <a href="https://m9y.ai" target="_blank" rel="noopener noreferrer">M9Y AI Pvt Ltd</a></span>
+    </div>
+    <div class="footer-meta">
+      <div class="footer-links" aria-label="Legal">
+        <a href="https://bundl.ai/privacy/">privacy</a>
+        <a href="https://bundl.ai/terms/">terms</a>
+      </div>
+      <span class="copy">© 2026 M9Y AI Pvt Ltd</span>
+    </div>
   </footer>
 
   <script>
