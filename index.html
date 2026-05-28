@@ -229,9 +229,34 @@
       animation: fadeUp 0.9s ease 0.65s forwards;
     }
 
+    .hero-lead-form {
+      display: flex;
+      align-items: stretch;
+      border: 1px solid var(--dim);
+      min-width: min(520px, 100%);
+      max-width: 100%;
+    }
+
+    .hero-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      padding: 14px 18px;
+      flex: 1;
+      min-width: 220px;
+      caret-color: var(--white);
+    }
+    .hero-input::placeholder { color: var(--dim); }
+    .hero-input.is-invalid { box-shadow: inset 0 0 0 1px #b22f2f; }
+
     .btn-primary {
       background: var(--white);
       color: var(--black);
+      border: none;
       font-family: var(--mono);
       font-size: 12px;
       letter-spacing: 0.1em;
@@ -530,6 +555,7 @@
       caret-color: var(--white);
     }
     .cta-input::placeholder { color: var(--dim); }
+    .cta-input.is-invalid { box-shadow: inset 0 0 0 1px #b22f2f; }
 
     .cta-submit {
       background: var(--white);
@@ -746,6 +772,9 @@
       .theme-toggle { padding: 6px 10px; font-size: 10px; }
       .hero { padding: 100px 20px 60px; }
       .hero-headline { font-size: 44px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; width: 100%; }
+      .hero-lead-form { width: 100%; min-width: 0; }
+      .hero-input { min-width: 0; }
       .section { padding: 72px 20px; }
       .jobs-grid { grid-template-columns: 1fr; }
       .statement-section { padding: 72px 20px; grid-template-columns: 1fr; gap: 40px; }
@@ -792,8 +821,11 @@
       Real AI employees that do the work. Send them tasks over chat, voice, or email — and get results back. No setup headaches. We handle everything.
     </p>
     <div class="hero-actions">
-      <a href="mailto:sales@bundl.ai" class="btn-primary">let's talk</a>
-      <a href="mailto:sales@bundl.ai" class="btn-ghost">see what they do</a>
+      <form class="hero-lead-form" id="heroLeadForm" novalidate>
+        <input class="hero-input" type="email" placeholder="your@company.com" id="heroEmail" required />
+        <button type="submit" class="btn-primary">let's talk</button>
+      </form>
+      <a href="#jobs" class="btn-ghost">see what we do</a>
     </div>
     <span class="hero-scroll-hint">scroll</span>
   </section>
@@ -831,7 +863,7 @@
 
   <!-- JOBS GRID -->
   <section class="section" id="jobs">
-    <p class="section-label reveal">roles we deploy</p>
+    <p class="section-label reveal">AI employees we offer</p>
     <div class="jobs-grid">
 
       <div class="job-card reveal">
@@ -967,8 +999,8 @@
         We're working with a small group of companies to deploy their first AI employees. No demo. No deck. Just a conversation about what work you want off your plate.
       </p>
       <div class="cta-email-form">
-        <input class="cta-input" type="email" placeholder="your@company.com" id="ctaEmail" />
-        <a href="mailto:sales@bundl.ai" class="cta-submit">let's talk</a>
+        <input class="cta-input" type="email" placeholder="your@company.com" id="ctaEmail" required />
+        <button type="button" class="cta-submit" id="ctaSubmit">let's talk</button>
       </div>
     </div>
   </section>
@@ -1036,6 +1068,40 @@
       label.textContent = isLight ? 'dark' : 'light';
       document.querySelector('meta[name="theme-color"]').setAttribute('content', isLight ? '#f5f5f0' : '#080808');
     });
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function routeToInterested(emailInputEl) {
+      const email = emailInputEl.value.trim();
+      if (!isValidEmail(email)) {
+        emailInputEl.classList.add('is-invalid');
+        emailInputEl.focus();
+        return;
+      }
+      emailInputEl.classList.remove('is-invalid');
+      window.location.href = `/meshlinks/?email=${encodeURIComponent(email)}`;
+    }
+
+    const heroLeadForm = document.getElementById('heroLeadForm');
+    const heroEmail = document.getElementById('heroEmail');
+    heroLeadForm.addEventListener('submit', e => {
+      e.preventDefault();
+      routeToInterested(heroEmail);
+    });
+    heroEmail.addEventListener('input', () => heroEmail.classList.remove('is-invalid'));
+
+    const ctaEmail = document.getElementById('ctaEmail');
+    const ctaSubmit = document.getElementById('ctaSubmit');
+    ctaSubmit.addEventListener('click', () => routeToInterested(ctaEmail));
+    ctaEmail.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        routeToInterested(ctaEmail);
+      }
+    });
+    ctaEmail.addEventListener('input', () => ctaEmail.classList.remove('is-invalid'));
 
     // Scroll reveals
     const reveals = document.querySelectorAll('.reveal');
