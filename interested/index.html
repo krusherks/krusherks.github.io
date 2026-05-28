@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interested — Bundl AI</title>
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../icon-512.png" />
+  <meta name="description" content="Bundl AI lead form for AI employee deployments." />
+  <meta name="theme-color" content="#f5f5f0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #080808;
+      --white: #f5f5f0;
+      --grey: #555550;
+      --dim: #d0d0c8;
+      --mono: 'DM Mono', monospace;
+      --sans: 'Bricolage Grotesque', sans-serif;
+    }
+    html, body {
+      background: var(--white);
+      color: var(--black);
+      font-family: var(--sans);
+      min-height: 100%;
+    }
+    .panel-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .panel-brand img {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      display: block;
+    }
+    .panel-brand a {
+      text-decoration: none;
+      color: var(--black);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      min-height: 100vh;
+    }
+    .panel { padding: 56px 48px; }
+    .left-panel { border-right: 1px solid var(--dim); }
+    .right-panel {
+      background: var(--black);
+      color: var(--white);
+    }
+    .label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 14px;
+    }
+    .right-panel .label { color: rgba(245,245,240,0.55); }
+    h1 {
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    .sub {
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--grey);
+      max-width: 560px;
+      margin-bottom: 34px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 560px;
+    }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--grey);
+      text-transform: uppercase;
+    }
+    .field input {
+      border: 1px solid var(--dim);
+      background: transparent;
+      color: var(--black);
+      padding: 13px 14px;
+      font-family: var(--mono);
+      font-size: 13px;
+      outline: none;
+    }
+    .field input:focus { border-color: #9a9a8f; }
+    .field input.is-invalid { border-color: #b22f2f; }
+    .phone-wrap {
+      display: flex;
+      align-items: stretch;
+      border: 1px solid var(--dim);
+      background: transparent;
+    }
+    .phone-prefix {
+      display: inline-flex;
+      align-items: center;
+      padding: 0 12px;
+      border-right: 1px solid var(--dim);
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--grey);
+      background: rgba(0,0,0,0.02);
+      user-select: none;
+    }
+    .phone-wrap input {
+      border: none;
+      flex: 1;
+      min-width: 0;
+    }
+    .phone-wrap:focus-within {
+      border-color: #9a9a8f;
+    }
+    .phone-wrap.is-invalid {
+      border-color: #b22f2f;
+    }
+    .submit-btn {
+      margin-top: 8px;
+      align-self: flex-start;
+      border: 1px solid var(--black);
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: lowercase;
+      padding: 13px 24px;
+      cursor: pointer;
+      min-width: 120px;
+    }
+    .submit-btn:hover { opacity: 0.88; }
+    .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .helper {
+      margin-top: 14px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--grey);
+      line-height: 1.6;
+      min-height: 18px;
+    }
+    .helper.success { color: #1f7a40; }
+    .helper.error { color: #b22f2f; }
+    .benefits { display: grid; gap: 14px; margin-top: 28px; }
+    .benefit {
+      border: 1px solid rgba(245,245,240,0.16);
+      padding: 20px 18px;
+      background: rgba(245,245,240,0.02);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+    .benefit:hover {
+      transform: translateY(-2px);
+      border-color: rgba(245,245,240,0.35);
+      background: rgba(245,245,240,0.06);
+    }
+    .benefit h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+      letter-spacing: 0.01em;
+      color: var(--white);
+    }
+    .benefit p {
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.8;
+      color: rgba(245,245,240,0.66);
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      .left-panel { border-right: none; border-bottom: 1px solid var(--dim); }
+      .panel { padding: 38px 20px; }
+      .panel-brand { margin-bottom: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="layout">
+    <section class="panel left-panel">
+      <div class="panel-brand">
+        <a href="https://bundl.ai/" style="display:inline-flex;align-items:center;gap:10px;">
+          <img src="../favicon.png" alt="" width="26" height="26" />
+          <span>Bundl AI</span>
+        </a>
+      </div>
+      <p class="label">Get Started</p>
+      <h1>AI employee deployment form</h1>
+      <p class="sub">Share your contact details so we can get in touch and discuss your AI employee deployment needs.</p>
+
+      <form id="interestForm" novalidate>
+        <div class="field">
+          <label for="nameOrBusiness">Name or Business Name</label>
+          <input id="nameOrBusiness" name="nameOrBusiness" type="text" placeholder="Acme Corp." required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="jed@acme.com" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <div class="phone-wrap" id="phoneWrap">
+            <span class="phone-prefix">+91</span>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="0000 000 000" maxlength="12" required />
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">submit</button>
+      </form>
+      <p class="helper" id="formStatus"></p>
+    </section>
+
+    <aside class="panel right-panel">
+      <p class="label">AI Employee Benefits</p>
+      <h2 style="font-size:clamp(28px,3.2vw,42px);line-height:1.08;letter-spacing:-0.01em;">Why teams choose Bundl AI</h2>
+      <div class="benefits">
+        <article class="benefit">
+          <h3>Role-specific AI employees</h3>
+          <p>Deploy Reception & HR, Hiring, Marketing & Sales, Accounts, Customer Success, and Operations workers mapped to real job outcomes.</p>
+        </article>
+        <article class="benefit">
+          <h3>Trained on your workflow</h3>
+          <p>Each AI employee is configured to your process, tone, and tools so outputs feel native to your team from the first week.</p>
+        </article>
+        <article class="benefit">
+          <h3>Omnichannel execution</h3>
+          <p>Run tasks through chat, voice, and email: lead follow-ups, candidate screening, support loops, reporting, and recurring operations.</p>
+        </article>
+        <article class="benefit">
+          <h3>No setup burden</h3>
+          <p>Our deployment team handles integration, prompts, and playbooks end-to-end so your team only manages priorities.</p>
+        </article>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const form = document.getElementById('interestForm');
+    const nameInput = document.getElementById('nameOrBusiness');
+    const emailInput = document.getElementById('email');
+    const phoneInput = document.getElementById('phone');
+    const phoneWrap = document.getElementById('phoneWrap');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusEl = document.getElementById('formStatus');
+
+    const LEAD_ENDPOINT = 'https://bundlbot.com/api/leads/external';
+    const LEAD_API_KEY = 'bundl-test-leads-2026-05-krish';
+
+    const params = new URLSearchParams(window.location.search);
+    const prefillEmail = params.get('email');
+    if (prefillEmail) emailInput.value = prefillEmail;
+
+    function validEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    }
+
+    function setInvalid(input, bad) {
+      input.classList.toggle('is-invalid', bad);
+    }
+
+    function formatPhoneDigits(raw) {
+      const digits = raw.replace(/\D/g, '').slice(0, 10);
+      if (digits.length <= 4) return digits;
+      if (digits.length <= 7) return `${digits.slice(0, 4)} ${digits.slice(4)}`;
+      return `${digits.slice(0, 4)} ${digits.slice(4, 7)} ${digits.slice(7)}`;
+    }
+
+    function getPhoneDigits(value) {
+      return value.replace(/\D/g, '');
+    }
+
+    [nameInput, emailInput, phoneInput].forEach((el) => {
+      el.addEventListener('input', () => {
+        setInvalid(el, false);
+        if (el === phoneInput) phoneWrap.classList.remove('is-invalid');
+      });
+    });
+
+    phoneInput.addEventListener('input', () => {
+      phoneInput.value = formatPhoneDigits(phoneInput.value);
+    });
+
+    async function submitLead(payload) {
+      return fetch(LEAD_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-lead-api-key': LEAD_API_KEY
+        },
+        body: JSON.stringify(payload)
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = nameInput.value.trim();
+      const email = emailInput.value.trim();
+      const phoneDigits = getPhoneDigits(phoneInput.value);
+
+      let hasError = false;
+      if (!name) { setInvalid(nameInput, true); hasError = true; }
+      if (!validEmail(email)) { setInvalid(emailInput, true); hasError = true; }
+      if (phoneDigits.length !== 10) {
+        setInvalid(phoneInput, true);
+        phoneWrap.classList.add('is-invalid');
+        hasError = true;
+      }
+
+      if (hasError) {
+        statusEl.textContent = 'Please fill all fields and enter a valid email.';
+        statusEl.className = 'helper error';
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusEl.textContent = 'Submitting...';
+      statusEl.className = 'helper';
+
+      try {
+        const res = await submitLead({
+          name,
+          phoneNumber: `+91 ${phoneDigits}`,
+          email,
+          referrer: 'site'
+        });
+
+        if (!res.ok) {
+          throw new Error(`Lead API failed: ${res.status}`);
+        }
+
+        statusEl.textContent = 'Thanks. Your details were submitted successfully.';
+        statusEl.className = 'helper success';
+      } catch (err) {
+        statusEl.textContent = 'Could not submit right now. Please try again.';
+        statusEl.className = 'helper error';
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

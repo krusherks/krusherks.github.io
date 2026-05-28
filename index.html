@@ -805,7 +805,7 @@
         <span class="toggle-icon">◐</span>
         <span class="toggle-label">dark</span>
       </button>
-      <a href="mailto:sales@bundl.ai" class="nav-cta">let's talk</a>
+      <a href="/interested/" class="nav-cta">let's talk</a>
     </div>
   </nav>
 
@@ -822,7 +822,7 @@
     </p>
     <div class="hero-actions">
       <form class="hero-lead-form" id="heroLeadForm" novalidate>
-        <input class="hero-input" type="email" placeholder="your@company.com" id="heroEmail" required />
+        <input class="hero-input" type="email" placeholder="jed@acme.com" id="heroEmail" required />
         <button type="submit" class="btn-primary">let's talk</button>
       </form>
       <a href="#jobs" class="btn-ghost">see what we do</a>
@@ -999,7 +999,7 @@
         We're working with a small group of companies to deploy their first AI employees. No demo. No deck. Just a conversation about what work you want off your plate.
       </p>
       <div class="cta-email-form">
-        <input class="cta-input" type="email" placeholder="your@company.com" id="ctaEmail" required />
+        <input class="cta-input" type="email" placeholder="jed@acme.com" id="ctaEmail" required />
         <button type="button" class="cta-submit" id="ctaSubmit">let's talk</button>
       </div>
     </div>
@@ -1081,7 +1081,7 @@
         return;
       }
       emailInputEl.classList.remove('is-invalid');
-      window.location.href = `/meshlinks/?email=${encodeURIComponent(email)}`;
+      window.location.href = `/interested/?email=${encodeURIComponent(email)}`;
     }
 
     const heroLeadForm = document.getElementById('heroLeadForm');
