@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Bundl AI — Credentials</title>
+<link rel="icon" type="image/png" href="../favicon.png"/>
+<link rel="apple-touch-icon" href="../icon-512.png"/>
+<meta name="description" content="Bundl AI credentials brief — AI employees deployed into your operations."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#0A0A0F;
+  --ink-2:#3A3A4A;
+  --ink-3:#7A7A8A;
+  --ink-4:#B0B0BE;
+  --green:#2DD4A8;
+  --green-dim:rgba(45,212,168,.12);
+  --bg:#FFFFFF;
+  --surface:#F6F7FB;
+  --border:#E2E4EA;
+  --border-strong:#C4C6D2;
+  --grid:rgba(45,212,168,0.045);
+  --page-pad:clamp(20px,5vw,64px);
+  --section-pad:clamp(48px,8vw,88px);
+}
+html{scroll-behavior:smooth;}
+html,body{
+  background:var(--bg);
+  font-family:'Inter',sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:48px 48px;pointer-events:none;z-index:0;
+}
+.page{position:relative;width:100%;z-index:1;}
+
+/* corner marks */
+.corner-mark{position:fixed;width:18px;height:18px;border-color:var(--green);border-style:solid;border-width:0;z-index:200;}
+.corner-mark.tl{top:14px;left:14px;border-top-width:1.5px;border-left-width:1.5px;}
+.corner-mark.tr{top:14px;right:14px;border-top-width:1.5px;border-right-width:1.5px;}
+.corner-mark.bl{bottom:14px;left:14px;border-bottom-width:1.5px;border-left-width:1.5px;}
+.corner-mark.br{bottom:14px;right:14px;border-bottom-width:1.5px;border-right-width:1.5px;}
+
+/* top bar */
+.topbar{
+  display:flex;align-items:center;gap:20px;
+  padding:12px var(--page-pad);border-bottom:1px solid var(--border);
+  background:rgba(255,255,255,0.95);position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(12px);width:100%;
+}
+.logo{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Sora',sans-serif;font-size:clamp(16px,2.5vw,18px);font-weight:800;
+  letter-spacing:-.03em;color:var(--ink);text-decoration:none;flex-shrink:0;
+}
+.logo img{width:28px;height:28px;border-radius:7px;flex-shrink:0;}
+.topbar-links{
+  display:flex;align-items:center;gap:24px;margin-left:auto;
+}
+.topbar-link{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);text-decoration:none;white-space:nowrap;transition:color .2s;
+}
+.topbar-link:hover{color:var(--ink);}
+.topbar-end{
+  display:flex;align-items:center;gap:14px;flex-shrink:0;
+}
+.topbar-pill{
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+  padding:6px 10px;border:1px solid var(--border);border-radius:999px;white-space:nowrap;
+}
+.topbar-cta{padding:9px 18px;}
+.btn-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:10px 20px;background:var(--ink);color:#fff;
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  border:1px solid var(--ink);transition:background .2s,color .2s,transform .15s;white-space:nowrap;
+}
+.btn-cta:hover{background:transparent;color:var(--ink);}
+.btn-cta.outline{background:transparent;color:var(--ink);border-color:var(--border-strong);}
+.btn-cta.outline:hover{background:var(--ink);color:#fff;border-color:var(--ink);}
+.btn-cta.green{background:var(--green);border-color:var(--green);color:var(--ink);}
+.btn-cta.green:hover{background:transparent;color:var(--green);}
+
+/* eyebrow */
+.eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--green);
+  display:flex;align-items:center;gap:10px;margin-bottom:20px;
+}
+.eyebrow::before{content:'';width:20px;height:1.5px;background:var(--green);flex-shrink:0;}
+.section-head{max-width:640px;margin-bottom:clamp(28px,5vw,40px);}
+
+/* hero */
+.hero{
+  padding:clamp(40px,8vw,80px) var(--page-pad) clamp(36px,6vw,64px);
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);
+  gap:clamp(32px,5vw,56px);align-items:start;
+  border-bottom:1px solid var(--border);
+}
+.hero h1{
+  font-family:'Sora',sans-serif;font-size:clamp(36px,6vw,62px);
+  font-weight:800;line-height:1.04;letter-spacing:-.035em;color:var(--ink);margin-bottom:20px;
+}
+.hero h1 span{color:var(--green);}
+.hero-body{font-size:clamp(14px,1.6vw,16px);color:var(--ink-2);line-height:1.75;font-weight:300;max-width:560px;}
+.hero-body strong{color:var(--ink);font-weight:500;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 13px;
+  border:1px solid var(--border-strong);border-radius:999px;
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.05em;color:var(--ink-2);
+  background:var(--bg);
+}
+.tag-dot{width:4px;height:4px;border-radius:50%;background:var(--green);flex-shrink:0;}
+.hero-right{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.info-block{border:1px solid var(--border);padding:16px 18px;background:var(--surface);position:relative;border-radius:4px;}
+.info-block::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:transparent;border-radius:4px 0 0 4px;}
+.info-block.accent{border-color:rgba(45,212,168,.4);background:var(--green-dim);}
+.info-block.accent::before{background:var(--green);}
+.info-block.span-2{grid-column:span 2;}
+.ib-label{
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px;
+}
+.ib-val{font-family:'Sora',sans-serif;font-size:clamp(13px,1.5vw,15px);font-weight:700;color:var(--ink);}
+.ib-val.g{color:var(--green);}
+.info-block.accent .ib-val{color:var(--ink);}
+.info-block.accent .ib-label{color:var(--green);}
+.ib-sub{font-size:11px;color:var(--ink-3);margin-top:3px;line-height:1.4;}
+.ib-badge{
+  display:inline-flex;align-items:center;gap:5px;margin-top:6px;margin-right:8px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--green);
+}
+.ib-badge::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);}
+
+/* stats strip */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-bottom:1px solid var(--border);background:var(--surface);
+  width:100%;
+}
+.stat{
+  padding:20px var(--page-pad);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;gap:4px;
+}
+.stat:last-child{border-right:none;}
+.stat-val{font-family:'Sora',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--ink);letter-spacing:-.03em;}
+.stat-val span{color:var(--green);}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
+
+/* section */
+.section{
+  padding:var(--section-pad) var(--page-pad);
+  border-bottom:1px solid var(--border);
+}
+.section.alt{background:var(--surface);}
+.section h2{
+  font-family:'Sora',sans-serif;font-size:clamp(24px,4vw,36px);
+  font-weight:700;letter-spacing:-.025em;color:var(--ink);line-height:1.12;
+}
+.section h2 span{color:var(--green);}
+
+/* cards */
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,2vw,18px);}
+.two-col{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,2vw,18px);}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,2vw,16px);}
+.workers-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,2vw,16px);}
+
+.card{
+  border:1px solid var(--border);padding:clamp(18px,3vw,24px);position:relative;background:var(--bg);
+  border-radius:6px;height:100%;transition:border-color .25s,box-shadow .25s;
+}
+.section.alt .card{background:#fff;}
+.card:hover{border-color:rgba(45,212,168,.45);box-shadow:0 8px 32px rgba(10,10,15,.06);}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .3s;border-radius:6px 6px 0 0;}
+.card:hover::before{transform:scaleX(1);}
+.card-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--green);margin-bottom:10px;}
+.card h3{font-family:'Sora',sans-serif;font-size:clamp(14px,1.6vw,16px);font-weight:600;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+.card p{font-size:clamp(12px,1.3vw,13.5px);color:var(--ink-2);line-height:1.65;}
+
+/* deploy */
+.deploy-banner{
+  background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--green);
+  padding:16px 20px;margin-bottom:clamp(20px,4vw,28px);
+  font-size:clamp(13px,1.4vw,14px);color:var(--ink-2);line-height:1.65;border-radius:0 6px 6px 0;
+}
+.section.alt .deploy-banner{background:#fff;}
+.deploy-banner strong{color:var(--ink);font-weight:600;}
+.deploy-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.deploy-step{padding:clamp(14px,2vw,20px) clamp(12px,1.5vw,16px);border-right:1px solid var(--border);position:relative;background:var(--bg);}
+.section.alt .deploy-step{background:#fff;}
+.deploy-step:last-child{border-right:none;}
+.deploy-step::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);}
+.ds-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.14em;color:var(--green);margin-bottom:6px;}
+.ds-title{font-family:'Sora',sans-serif;font-size:clamp(12px,1.3vw,13px);font-weight:700;color:var(--ink);margin-bottom:5px;line-height:1.3;}
+.ds-desc{font-size:clamp(10.5px,1.1vw,11.5px);color:var(--ink-3);line-height:1.55;}
+
+/* founder */
+.founder-card{
+  border:1px solid var(--border);padding:clamp(18px,3vw,24px);
+  display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;
+  border-radius:6px;background:var(--bg);height:100%;
+}
+.section.alt .founder-card{background:#fff;}
+.fc-init{
+  width:44px;height:44px;background:var(--green);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.fc-name{font-family:'Sora',sans-serif;font-size:clamp(14px,1.5vw,15px);font-weight:700;color:var(--ink);}
+.fc-role{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin:4px 0 10px;
+}
+.fc-bio{font-size:clamp(12px,1.3vw,13px);color:var(--ink-2);line-height:1.75;}
+.fc-bio strong{color:var(--ink);font-weight:700;background:rgba(45,212,168,.1);padding:0 3px;}
+
+/* pipeline */
+.pipeline-card{
+  border:1px solid var(--border);padding:clamp(16px,2.5vw,20px);position:relative;
+  border-radius:6px;background:var(--bg);height:100%;
+}
+.section.alt .pipeline-card{background:#fff;}
+.pipeline-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);border-radius:6px 6px 0 0;}
+.pc-name{font-family:'Sora',sans-serif;font-size:clamp(13px,1.4vw,14px);font-weight:700;color:var(--ink);margin-bottom:4px;}
+.pc-sector{
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);margin-bottom:8px;
+}
+.pc-desc{font-size:clamp(11px,1.2vw,12px);color:var(--ink-3);line-height:1.55;}
+
+/* diff */
+.diff-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,2vw,14px);}
+.diff-item{
+  display:flex;align-items:flex-start;gap:14px;padding:clamp(14px,2.5vw,18px);
+  border:1px solid var(--border);background:var(--bg);border-radius:6px;height:100%;
+}
+.section.alt .diff-item{background:#fff;}
+.di-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--green);flex-shrink:0;margin-top:2px;}
+.di-title{font-family:'Sora',sans-serif;font-size:clamp(12px,1.3vw,13px);font-weight:600;color:var(--ink);margin-bottom:4px;}
+.di-body{font-size:clamp(11px,1.2vw,12px);color:var(--ink-2);line-height:1.6;}
+
+/* workers */
+.worker-card{
+  border:1px solid var(--border);padding:clamp(16px,2.5vw,20px) clamp(14px,2vw,18px);
+  position:relative;border-radius:6px;background:var(--bg);height:100%;
+  transition:border-color .25s,box-shadow .25s;
+}
+.section.alt .worker-card{background:#fff;}
+.worker-card:hover{border-color:rgba(45,212,168,.45);box-shadow:0 8px 32px rgba(10,10,15,.06);}
+.worker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--green);border-radius:6px 6px 0 0;}
+.wc-init{
+  width:36px;height:36px;background:var(--ink);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:var(--green);margin-bottom:10px;
+}
+.wc-name{font-family:'Sora',sans-serif;font-size:clamp(13px,1.4vw,14px);font-weight:700;color:var(--ink);}
+.wc-role{
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin:4px 0 8px;
+}
+.wc-desc{font-size:clamp(11px,1.2vw,12px);color:var(--ink-3);line-height:1.55;}
+.worker-card.featured{
+  border-color:rgba(45,212,168,.45);background:var(--green-dim);
+  box-shadow:0 8px 32px rgba(45,212,168,.08);
+}
+.section.alt .worker-card.featured{background:rgba(45,212,168,.06);}
+.worker-card.featured::before{transform:scaleX(1);}
+.wc-focus{
+  display:inline-block;margin-top:10px;padding:4px 8px;
+  font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--green);
+  border:1px solid rgba(45,212,168,.35);border-radius:999px;
+}
+.cta-band{
+  padding:clamp(48px,8vw,72px) var(--page-pad);
+  background:var(--ink);color:#fff;text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:20px;
+  width:100%;
+}
+.cta-band h2{
+  font-family:'Sora',sans-serif;font-size:clamp(26px,5vw,42px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.1;max-width:640px;
+}
+.cta-band h2 span{color:var(--green);}
+.cta-band p{font-size:clamp(14px,1.6vw,16px);color:rgba(255,255,255,.55);max-width:480px;line-height:1.65;}
+.cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:4px;}
+
+/* footer */
+.footer{
+  padding:clamp(28px,5vw,40px) var(--page-pad);
+  display:grid;grid-template-columns:1fr auto auto;align-items:start;
+  gap:clamp(24px,4vw,40px);background:var(--ink);
+  border-top:1px solid rgba(255,255,255,.06);
+  width:100%;
+}
+.footer-logo{
+  display:flex;align-items:center;gap:10px;
+  font-family:'Sora',sans-serif;font-size:clamp(16px,2vw,18px);font-weight:800;letter-spacing:-.03em;color:#fff;
+}
+.footer-logo img{width:28px;height:28px;border-radius:7px;flex-shrink:0;}
+.footer-sub{
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);margin-top:6px;line-height:1.6;
+}
+.footer-contacts{display:flex;flex-direction:column;gap:14px;}
+.fci{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.5);display:flex;flex-direction:column;gap:3px;}
+.fci a{color:rgba(255,255,255,.85);text-decoration:none;font-size:11px;font-weight:600;}
+.fci a:hover{color:var(--green);}
+.fci strong{font-size:11px;color:rgba(255,255,255,.85);font-weight:600;}
+.footer-badges{display:flex;flex-direction:column;gap:6px;align-items:flex-end;}
+.fb{
+  display:inline-flex;align-items:center;gap:5px;padding:4px 10px;
+  border:1px solid rgba(255,255,255,.1);border-radius:999px;
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(255,255,255,.38);
+}
+.fb.a{border-color:rgba(45,212,168,.35);color:rgba(45,212,168,.7);}
+.fb.a::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--green);}
+
+/* tablet */
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr;}
+  .hero-right{grid-template-columns:repeat(2,1fr);max-width:560px;}
+  .four-col{grid-template-columns:repeat(2,1fr);}
+  .workers-grid{grid-template-columns:repeat(3,1fr);}
+  .deploy-grid{grid-template-columns:repeat(3,1fr);}
+  .deploy-step:nth-child(3){border-right:none;}
+  .deploy-step:nth-child(4),
+  .deploy-step:nth-child(5){border-top:1px solid var(--border);}
+  .deploy-step:nth-child(4){border-right:1px solid var(--border);}
+  .footer{grid-template-columns:1fr 1fr;}
+  .footer-badges{align-items:flex-start;}
+}
+
+/* mobile */
+@media(max-width:720px){
+  .corner-mark{display:none;}
+  .topbar{
+    display:grid;grid-template-columns:1fr auto;align-items:center;
+    padding:12px 20px;gap:12px;
+  }
+  .topbar-links{display:none;}
+  .topbar-end{margin-left:0;}
+  .topbar-pill{display:none;}
+  .topbar-cta{padding:8px 14px;font-size:9px;}
+  .hero{padding-top:32px;}
+  .hero-right{grid-template-columns:1fr;max-width:none;}
+  .info-block.span-2{grid-column:span 1;}
+  .stats-strip{grid-template-columns:repeat(2,1fr);}
+  .stat:nth-child(2){border-right:none;}
+  .stat:nth-child(1),
+  .stat:nth-child(2){border-bottom:1px solid var(--border);}
+  .stat{padding:16px 20px;}
+  .three-col,
+  .two-col,
+  .four-col,
+  .workers-grid,
+  .diff-grid{grid-template-columns:1fr;}
+  .deploy-grid{grid-template-columns:1fr;border-radius:6px;}
+  .deploy-step{border-right:none!important;border-bottom:1px solid var(--border);}
+  .deploy-step:last-child{border-bottom:none;}
+  .footer{grid-template-columns:1fr;text-align:left;}
+  .footer-badges{align-items:flex-start;flex-direction:row;flex-wrap:wrap;}
+}
+
+@media(max-width:400px){
+  .hero-actions .btn-cta{width:100%;}
+  .cta-actions .btn-cta{width:100%;}
+}
+
+@media print{
+  body::before{display:none;}
+  .topbar{position:static;}
+  .corner-mark{display:none;}
+  .btn-cta,.cta-band{display:none;}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+}
+</style>
+</head>
+<body>
+
+<div class="corner-mark tl"></div>
+<div class="corner-mark tr"></div>
+<div class="corner-mark bl"></div>
+<div class="corner-mark br"></div>
+
+<div class="page">
+
+  <header class="topbar">
+    <a class="logo" href="/"><img src="../icon-512.png" alt="" width="28" height="28"/>Bundl AI</a>
+    <nav class="topbar-links" aria-label="Page sections">
+      <a class="topbar-link" href="#capabilities">Capabilities</a>
+      <a class="topbar-link" href="#deploy">Deploy</a>
+      <a class="topbar-link" href="#team">Team</a>
+    </nav>
+    <div class="topbar-end">
+      <span class="topbar-pill">Confidential</span>
+      <a class="btn-cta green topbar-cta" href="/interested/">Let's talk</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">AI-Native Deployment Company</div>
+      <h1>Real AI <span>employees.</span><br/>Deployed into<br/>your operations.</h1>
+      <p class="hero-body">
+        Bundl AI embeds within your organisation, maps exactly how you work,
+        and deploys <strong>custom AI employees</strong> trained on your SOPs, workflows, and escalation rules —
+        across voice, WhatsApp, email, and your existing systems.<br/><br/>
+        We don't sell tools. We deliver outcomes.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-cta green" href="/interested/">Start a conversation</a>
+        <a class="btn-cta outline" href="#capabilities">See what we do</a>
+      </div>
+      <div class="hero-tags">
+        <div class="tag"><div class="tag-dot"></div>Hiring &amp; HR Automation</div>
+        <div class="tag"><div class="tag-dot"></div>Collections &amp; Payments</div>
+        <div class="tag"><div class="tag-dot"></div>Finance Operations</div>
+        <div class="tag"><div class="tag-dot"></div>Customer Support</div>
+        <div class="tag"><div class="tag-dot"></div>22+ Regional Languages</div>
+        <div class="tag"><div class="tag-dot"></div>Legacy ERP Integration</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="info-block span-2">
+        <div class="ib-label">Legal Entity</div>
+        <div class="ib-val">M9Y AI Private Limited</div>
+        <div class="ib-sub">Operating as Bundl AI</div>
+      </div>
+      <div class="info-block accent span-2">
+        <div class="ib-label">Recognition</div>
+        <div class="ib-val">DPIIT Recognised</div>
+        <div class="ib-badge">Startup India Certified</div>
+      </div>
+      <div class="info-block accent span-2">
+        <div class="ib-label">Recognition</div>
+        <div class="ib-val">MSME Certified</div>
+      </div>
+      <div class="info-block">
+        <div class="ib-label">Avg. Deployment</div>
+        <div class="ib-val g">4 – 6 Weeks</div>
+        <div class="ib-sub">Discovery to live</div>
+      </div>
+      <div class="info-block">
+        <div class="ib-label">Languages</div>
+        <div class="ib-val g">22+</div>
+        <div class="ib-sub">Native fluency</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stat">
+      <div class="stat-val">4<span>+</span></div>
+      <div class="stat-label">Enterprise clients in pipeline</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">22<span>+</span></div>
+      <div class="stat-label">Regional languages</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">5<span>-step</span></div>
+      <div class="stat-label">Forward-deploy process</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">24<span>/7</span></div>
+      <div class="stat-label">AI employee availability</div>
+    </div>
+  </div>
+
+  <section class="section alt" id="capabilities">
+    <div class="section-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Three capabilities.<br/><span>One integrated platform.</span></h2>
+    </div>
+    <div class="three-col">
+      <div class="card">
+        <div class="card-num">01 · AI EMPLOYEES</div>
+        <h3>Custom AI workers trained on your business</h3>
+        <p>Built around your SOPs, escalation logic, and communication channels. They work 24/7 across WhatsApp, voice, web, and internal tools — and report to your team.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02 · API INFRASTRUCTURE</div>
+        <h3>Legacy integration without rip-and-replace</h3>
+        <p>Custom AI APIs connect your ERPs, CRMs, and fragmented systems. Real-time data flow is established without costly rebuilds or forcing teams to change how they work.</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03 · SCALE ENGINE</div>
+        <h3>Operational scale without headcount growth</h3>
+        <p>Automate high-volume, repetitive workflows. Continuous retraining on new business data, monthly performance reporting, and proactive bottleneck identification.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="deploy">
+    <div class="section-head">
+      <div class="eyebrow">How We Deploy</div>
+      <h2>We embed first.<br/><span>Then we build.</span></h2>
+    </div>
+    <div class="deploy-banner">
+      <strong>Forward-Deploy Engineering —</strong> unlike remote SaaS vendors, our engineers physically embed on-site to capture real operational intelligence before writing a single line of code. Every deployment is fully bespoke, built around your existing tech stack and SOPs.
+    </div>
+    <div class="deploy-grid">
+      <div class="deploy-step">
+        <div class="ds-num">01 · DISCOVER</div>
+        <div class="ds-title">On-site embedding</div>
+        <div class="ds-desc">Map all workflows, audit data systems, interview operational staff, document SOPs and edge cases.</div>
+      </div>
+      <div class="deploy-step">
+        <div class="ds-num">02 · BLUEPRINT</div>
+        <div class="ds-title">Design &amp; architect</div>
+        <div class="ds-desc">Design AI employee roles, architect automation flows, define API and integration requirements.</div>
+      </div>
+      <div class="deploy-step">
+        <div class="ds-num">03 · BUILD</div>
+        <div class="ds-title">Train &amp; integrate</div>
+        <div class="ds-desc">Develop AI employees trained on your SOPs. Build and test all API integrations. QA against real scenarios.</div>
+      </div>
+      <div class="deploy-step">
+        <div class="ds-num">04 · DEPLOY</div>
+        <div class="ds-title">Go live</div>
+        <div class="ds-desc">Launch across WhatsApp, phone, and web. Run parallel testing alongside live workflows.</div>
+      </div>
+      <div class="deploy-step">
+        <div class="ds-num">05 · EVOLVE</div>
+        <div class="ds-title">Continuous improvement</div>
+        <div class="ds-desc">Retrain on new data, monthly performance reporting, workflow expansion and version upgrades.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-head">
+      <div class="eyebrow">Deployed AI Employees</div>
+      <h2>Named employees.<br/><span>Real operational roles.</span></h2>
+    </div>
+    <div class="workers-grid">
+      <div class="worker-card">
+        <div class="wc-init">T</div>
+        <div class="wc-name">Tara</div>
+        <div class="wc-role">AI Hiring Manager</div>
+        <div class="wc-desc">Screens applications end-to-end, conducts AI voice interview rounds, and automates scheduling and offer communications across multiple languages.</div>
+      </div>
+      <div class="worker-card">
+        <div class="wc-init">S</div>
+        <div class="wc-name">Sakshi</div>
+        <div class="wc-role">AI Workforce Operations</div>
+        <div class="wc-desc">Handles attendance tracking, payroll processing, and workforce management — leave requests, shift scheduling, timesheet reconciliation, and employee queries across HR ops workflows.</div>
+      </div>
+      <div class="worker-card">
+        <div class="wc-init">A</div>
+        <div class="wc-name">Aarti</div>
+        <div class="wc-role">AI Accounts Receivable</div>
+        <div class="wc-desc">Manages invoicing, payment follow-ups, and collections workflows. Tracks outstanding balances, sends reminders, and escalates delinquent accounts per your credit policies.</div>
+      </div>
+      <div class="worker-card featured">
+        <div class="wc-init">AK</div>
+        <div class="wc-name">Akash</div>
+        <div class="wc-role">PAQ — Policy Adherence &amp; Quality</div>
+        <div class="wc-desc">Monitors RBI regulatory feeds in real time, flags policy breaches, and maps out-of-compliance items to the right departments. Tracks remediation status, documents audit trails, and surfaces recurring adherence gaps before they escalate.</div>
+        <span class="wc-focus">Deployed for this engagement</span>
+      </div>
+      <div class="worker-card">
+        <div class="wc-init">AT</div>
+        <div class="wc-name">Atharv</div>
+        <div class="wc-role">AI Voice Caller</div>
+        <div class="wc-desc">Outbound and inbound AI calling across use cases — payment reminders, verification calls, status updates, and customer outreach. Adapts scripts and tone per workflow, with full call logging and handoff to human teams when needed.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="team">
+    <div class="section-head">
+      <div class="eyebrow">Leadership</div>
+      <h2>Founded by operators<br/><span>who've done it before.</span></h2>
+    </div>
+    <div class="two-col">
+      <div class="founder-card">
+        <div class="fc-init">KS</div>
+        <div>
+          <div class="fc-name">Krish Shetty</div>
+          <div class="fc-role">Co-Founder &amp; CEO</div>
+          <div class="fc-bio">
+            Former <strong>Head of Agentic Commerce at PayPal</strong> — led AI-powered payment and merchant automation at global scale. Senior technical and product leadership at <strong>Jupiter Money</strong>, India's fastest-growing neobank. Deep expertise in AI systems, enterprise workflow automation, and scalable product ecosystems across regulated financial environments.
+          </div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <div class="fc-init">MM</div>
+        <div>
+          <div class="fc-name">Miloshi Mehta</div>
+          <div class="fc-role">Co-Founder &amp; CPO</div>
+          <div class="fc-bio">
+            10+ years leading product and AI initiatives across <strong>New York, Seattle, and Silicon Valley</strong> ecosystems. Former President — <strong>Society of Women Engineers (SWE), APAC Chapter</strong>. Specialized in AI frameworks, workflow automation, and scalable platform development. Agentic AI products and <strong>Gates Foundation</strong> grant recipient.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="section-head">
+      <div class="eyebrow">Client Pipeline</div>
+      <h2>Active engagements across<br/><span>BFSI, pharma &amp; financial services.</span></h2>
+    </div>
+    <div class="four-col">
+      <div class="pipeline-card">
+        <div class="pc-name">Encore Pharma</div>
+        <div class="pc-sector">Pharmaceuticals</div>
+        <div class="pc-desc">AI-powered operations and distribution workflow automation at scale.</div>
+      </div>
+      <div class="pipeline-card">
+        <div class="pc-name">KFin Technologies</div>
+        <div class="pc-sector">Financial Services · RTA</div>
+        <div class="pc-desc">Accounts receivable and payment collection — invoicing follow-ups, outstanding balance tracking, and automated collections across investor and finance operations.</div>
+      </div>
+      <div class="pipeline-card">
+        <div class="pc-name">IndusInd Bank</div>
+        <div class="pc-sector">Banking · PAQ</div>
+        <div class="pc-desc">In talks for Policy Adherence &amp; Quality — RBI feed monitoring, compliance flagging, and out-of-compliance department mapping.</div>
+      </div>
+      <div class="pipeline-card">
+        <div class="pc-name">Poonawalla Fincorp</div>
+        <div class="pc-sector">NBFC · Lending · PAQ</div>
+        <div class="pc-desc">In talks for Policy Adherence &amp; Quality — regulatory monitoring, breach detection, and routing remediation to the right teams.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div class="eyebrow">Why Bundl AI</div>
+      <h2>What sets us<br/><span>apart.</span></h2>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <div class="di-num">01</div>
+        <div>
+          <div class="di-title">First-Mover in Operational AI Deployment</div>
+          <div class="di-body">Built around AI Employees from day one — not an agency that bolted on AI, not a SaaS company that added professional services.</div>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="di-num">02</div>
+        <div>
+          <div class="di-title">On-Boots Deployment — No Remote Guessing</div>
+          <div class="di-body">We physically embed within every business before building. This gives us operational intelligence no competitor gains from Zoom calls or questionnaires.</div>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="di-num">03</div>
+        <div>
+          <div class="di-title">Vernacular Intelligence at 22+ Languages</div>
+          <div class="di-body">Our AI thinks and communicates natively in Bhojpuri, Marathi, Kannada, Tamil, and 18+ more. Native operational fluency — not translation layers.</div>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="di-num">04</div>
+        <div>
+          <div class="di-title">Proprietary Training Infrastructure &amp; IP</div>
+          <div class="di-body">We own our fine-tuning pipelines and model infrastructure. Every client deployment deepens our proprietary data advantage — it compounds with scale.</div>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="di-num">05</div>
+        <div>
+          <div class="di-title">Legacy Integration — No Rip and Replace</div>
+          <div class="di-body">Our methodology connects archaic ERPs, databases, and workflows to AI infrastructure — a skill set that takes years to develop and replicate.</div>
+        </div>
+      </div>
+      <div class="diff-item">
+        <div class="di-num">06</div>
+        <div>
+          <div class="di-title">Founders with Global Enterprise AI Pedigree</div>
+          <div class="di-body">Ex-PayPal Head of Agentic Commerce and a product leader with 10+ years across Silicon Valley and Gates Foundation grants. This is not a first attempt.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <h2>Ready to deploy<br/><span>your first AI employee?</span></h2>
+    <p>We embed on-site, map your operations, and go live in weeks — not quarters.</p>
+    <div class="cta-actions">
+      <a class="btn-cta green" href="/interested/">Let's talk</a>
+      <a class="btn-cta outline" href="https://bundl.ai" style="color:#fff;border-color:rgba(255,255,255,.25);">bundl.ai</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <div class="footer-logo"><img src="../icon-512.png" alt="" width="28" height="28"/>Bundl AI</div>
+      <div class="footer-sub">M9Y AI Private Limited · Confidential · For Recipient Use Only</div>
+    </div>
+    <div class="footer-contacts">
+      <div class="fci">
+        <a href="mailto:miloshi@bundl.ai">miloshi@bundl.ai</a>
+        Chief Product Officer
+      </div>
+      <div class="fci">
+        <a href="tel:+919930388783">+91 9930388783</a>
+        Let's build together
+      </div>
+      <div class="fci">
+        <a href="https://bundl.ai">bundl.ai</a>
+        Explore. Connect. Grow.
+      </div>
+    </div>
+    <div class="footer-badges">
+      <div class="fb a">DPIIT Recognised</div>
+      <div class="fb a">Startup India Certified</div>
+      <div class="fb a">MSME Certified</div>
+      <div class="fb">AI Employees. Real Impact.</div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
