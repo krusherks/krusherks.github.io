@@ -211,22 +211,26 @@ body::before{
 /* founder */
 .founder-card{
   border:1px solid var(--border);padding:clamp(18px,3vw,24px);
-  display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start;
+  display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:start;
   border-radius:6px;background:var(--bg);height:100%;
 }
 .section.alt .founder-card{background:#fff;}
-.fc-init{
-  width:44px;height:44px;background:var(--green);border-radius:6px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;
+.fc-photo{
+  width:72px;height:72px;border-radius:8px;overflow:hidden;flex-shrink:0;
+  display:block;border:1px solid var(--border);
 }
-.fc-name{font-family:'Sora',sans-serif;font-size:clamp(14px,1.5vw,15px);font-weight:700;color:var(--ink);}
+.fc-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.fc-name{font-family:'Sora',sans-serif;font-size:clamp(14px,1.5vw,15px);font-weight:700;}
+.fc-name a{color:var(--ink);text-decoration:none;transition:color .2s;}
+.fc-name a:hover{color:var(--green);}
 .fc-role{
   font-family:'JetBrains Mono',monospace;font-size:9.5px;font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin:4px 0 10px;
 }
 .fc-bio{font-size:clamp(12px,1.3vw,13px);color:var(--ink-2);line-height:1.75;}
 .fc-bio strong{color:var(--ink);font-weight:700;background:rgba(45,212,168,.1);padding:0 3px;}
+.fc-bio a{color:var(--ink);font-weight:700;background:rgba(45,212,168,.1);padding:0 3px;text-decoration:none;transition:color .2s;}
+.fc-bio a:hover{color:var(--green);}
 
 /* pipeline */
 .pipeline-card{
@@ -252,6 +256,8 @@ body::before{
 .di-num{font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.16em;color:var(--green);flex-shrink:0;margin-top:2px;}
 .di-title{font-family:'Sora',sans-serif;font-size:clamp(12px,1.3vw,13px);font-weight:600;color:var(--ink);margin-bottom:4px;}
 .di-body{font-size:clamp(11px,1.2vw,12px);color:var(--ink-2);line-height:1.6;}
+.di-body a{color:var(--ink);font-weight:600;text-decoration:underline;text-decoration-color:rgba(45,212,168,.5);text-underline-offset:2px;}
+.di-body a:hover{color:var(--green);}
 
 /* workers */
 .worker-card{
@@ -466,7 +472,7 @@ body::before{
 
   <div class="stats-strip">
     <div class="stat">
-      <div class="stat-val">4<span>+</span></div>
+      <div class="stat-val">20<span>+</span></div>
       <div class="stat-label">Enterprise clients in pipeline</div>
     </div>
     <div class="stat">
@@ -482,6 +488,39 @@ body::before{
       <div class="stat-label">AI employee availability</div>
     </div>
   </div>
+
+  <section class="section" id="team">
+    <div class="section-head">
+      <div class="eyebrow">Leadership</div>
+      <h2>Founded by operators<br/><span>who've done it before.</span></h2>
+    </div>
+    <div class="two-col">
+      <div class="founder-card">
+        <a class="fc-photo" href="https://www.linkedin.com/in/kshetty5/" target="_blank" rel="noopener noreferrer">
+          <img src="founders/krish-shetty.png" alt="Krish Shetty" width="72" height="72"/>
+        </a>
+        <div>
+          <div class="fc-name"><a href="https://www.linkedin.com/in/kshetty5/" target="_blank" rel="noopener noreferrer">Krish Shetty</a></div>
+          <div class="fc-role">Co-Founder &amp; CEO</div>
+          <div class="fc-bio">
+            Former <a href="https://www.businessinsider.com/paypal-mafia-members-elon-musk-peter-thiel-reid-hoffman-companies" target="_blank" rel="noopener noreferrer">Head of Agentic Commerce at PayPal</a> — led AI-powered payment and merchant automation at global scale. Senior technical and product leadership at <strong>Jupiter Money</strong>, India's fastest-growing neobank. Deep expertise in AI systems, enterprise workflow automation, and scalable product ecosystems across regulated financial environments.
+          </div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <a class="fc-photo" href="https://www.linkedin.com/in/miloshimehta/" target="_blank" rel="noopener noreferrer">
+          <img src="founders/miloshi-mehta.png" alt="Miloshi Mehta" width="72" height="72"/>
+        </a>
+        <div>
+          <div class="fc-name"><a href="https://www.linkedin.com/in/miloshimehta/" target="_blank" rel="noopener noreferrer">Miloshi Mehta</a></div>
+          <div class="fc-role">Co-Founder &amp; CPO</div>
+          <div class="fc-bio">
+            10+ years leading product and AI initiatives across <strong>New York, Seattle, and Silicon Valley</strong> ecosystems. Former President — <strong>Society of Women Engineers (SWE), APAC Chapter</strong>. Specialized in AI frameworks, workflow automation, and scalable platform development. Agentic AI products and <a href="https://www.gatesfoundation.org/our-work" target="_blank" rel="noopener noreferrer">Gates Foundation</a> grant recipient.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="section alt" id="capabilities">
     <div class="section-head">
@@ -584,36 +623,7 @@ body::before{
     </div>
   </section>
 
-  <section class="section" id="team">
-    <div class="section-head">
-      <div class="eyebrow">Leadership</div>
-      <h2>Founded by operators<br/><span>who've done it before.</span></h2>
-    </div>
-    <div class="two-col">
-      <div class="founder-card">
-        <div class="fc-init">KS</div>
-        <div>
-          <div class="fc-name">Krish Shetty</div>
-          <div class="fc-role">Co-Founder &amp; CEO</div>
-          <div class="fc-bio">
-            Former <strong>Head of Agentic Commerce at PayPal</strong> — led AI-powered payment and merchant automation at global scale. Senior technical and product leadership at <strong>Jupiter Money</strong>, India's fastest-growing neobank. Deep expertise in AI systems, enterprise workflow automation, and scalable product ecosystems across regulated financial environments.
-          </div>
-        </div>
-      </div>
-      <div class="founder-card">
-        <div class="fc-init">MM</div>
-        <div>
-          <div class="fc-name">Miloshi Mehta</div>
-          <div class="fc-role">Co-Founder &amp; CPO</div>
-          <div class="fc-bio">
-            10+ years leading product and AI initiatives across <strong>New York, Seattle, and Silicon Valley</strong> ecosystems. Former President — <strong>Society of Women Engineers (SWE), APAC Chapter</strong>. Specialized in AI frameworks, workflow automation, and scalable platform development. Agentic AI products and <strong>Gates Foundation</strong> grant recipient.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section alt">
+  <section class="section">
     <div class="section-head">
       <div class="eyebrow">Client Pipeline</div>
       <h2>Active engagements across<br/><span>BFSI, pharma &amp; financial services.</span></h2>
@@ -642,7 +652,7 @@ body::before{
     </div>
   </section>
 
-  <section class="section">
+  <section class="section alt">
     <div class="section-head">
       <div class="eyebrow">Why Bundl AI</div>
       <h2>What sets us<br/><span>apart.</span></h2>
@@ -687,7 +697,7 @@ body::before{
         <div class="di-num">06</div>
         <div>
           <div class="di-title">Founders with Global Enterprise AI Pedigree</div>
-          <div class="di-body">Ex-PayPal Head of Agentic Commerce and a product leader with 10+ years across Silicon Valley and Gates Foundation grants. This is not a first attempt.</div>
+          <div class="di-body"><a href="https://www.businessinsider.com/paypal-mafia-members-elon-musk-peter-thiel-reid-hoffman-companies" target="_blank" rel="noopener noreferrer">Ex-PayPal Head of Agentic Commerce</a> and a product leader with 10+ years across Silicon Valley and <a href="https://www.gatesfoundation.org/our-work" target="_blank" rel="noopener noreferrer">Gates Foundation</a> grants. This is not a first attempt.</div>
         </div>
       </div>
     </div>
