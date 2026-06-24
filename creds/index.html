@@ -161,6 +161,49 @@ body::before{
 .stat-val span{color:var(--green);}
 .stat-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);}
 
+/* logo carousel */
+.logo-carousel{
+  position:relative;overflow:hidden;border-bottom:1px solid var(--border);background:var(--bg);
+  padding:clamp(24px,3vw,32px) 0;
+}
+.logo-carousel::before,
+.logo-carousel::after{
+  content:'';position:absolute;top:0;bottom:0;width:clamp(48px,10vw,120px);z-index:2;
+  pointer-events:none;
+}
+.logo-carousel::before{
+  left:0;
+  background:linear-gradient(to right,var(--bg) 15%,transparent);
+  backdrop-filter:blur(6px);
+  -webkit-mask-image:linear-gradient(to right,#000 25%,transparent);
+  mask-image:linear-gradient(to right,#000 25%,transparent);
+}
+.logo-carousel::after{
+  right:0;
+  background:linear-gradient(to left,var(--bg) 15%,transparent);
+  backdrop-filter:blur(6px);
+  -webkit-mask-image:linear-gradient(to left,#000 25%,transparent);
+  mask-image:linear-gradient(to left,#000 25%,transparent);
+}
+.logo-carousel-track{
+  display:flex;align-items:center;gap:clamp(56px,8vw,96px);width:max-content;
+  animation:logo-marquee 50s linear infinite;
+}
+.logo-carousel:hover .logo-carousel-track{animation-play-state:paused;}
+.logo-carousel-set{display:flex;align-items:center;gap:clamp(56px,8vw,96px);flex-shrink:0;}
+.logo-carousel-item{
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  height:clamp(56px,8vw,72px);padding:0 12px;
+}
+.logo-carousel-item img{height:clamp(40px,5vw,56px);width:auto;max-width:180px;object-fit:contain;display:block;}
+@keyframes logo-marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+@media(prefers-reduced-motion:reduce){
+  .logo-carousel-track{animation:none;}
+}
+
 /* section */
 .section{
   padding:var(--section-pad) var(--page-pad);
@@ -473,7 +516,7 @@ body::before{
   <div class="stats-strip">
     <div class="stat">
       <div class="stat-val">20<span>+</span></div>
-      <div class="stat-label">Enterprise clients in pipeline</div>
+      <div class="stat-label">Enterprise Clients</div>
     </div>
     <div class="stat">
       <div class="stat-val">22<span>+</span></div>
@@ -488,6 +531,47 @@ body::before{
       <div class="stat-label">AI employee availability</div>
     </div>
   </div>
+
+  <section class="logo-carousel" aria-label="Clients and partners">
+    <div class="logo-carousel-track">
+      <div class="logo-carousel-set">
+        <a class="logo-carousel-item" href="https://meshlinks.in/" target="_blank" rel="noopener noreferrer" title="Meshlinks">
+          <img src="logos/meshlinks.png" alt="Meshlinks" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://www.terrapy.in/" target="_blank" rel="noopener noreferrer" title="Terrapy">
+          <img src="logos/terrapy.png" alt="Terrapy" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://encorehealthcare.in/" target="_blank" rel="noopener noreferrer" title="Encore Healthcare">
+          <img src="logos/encore-healthcare.png" alt="Encore Healthcare" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://www.ey.com/en_in" target="_blank" rel="noopener noreferrer" title="EY">
+          <img src="logos/ey.png" alt="EY" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://www.teama4s.com/" target="_blank" rel="noopener noreferrer" title="Team A4S">
+          <img src="logos/teama4s.png" alt="Team A4S" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://gandhineru.com/" target="_blank" rel="noopener noreferrer" title="Gandhi &amp; Neru">
+          <img src="logos/gandhi-neru.svg" alt="Gandhi &amp; Neru" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://www.bjp.org/" target="_blank" rel="noopener noreferrer" title="BJP">
+          <img src="logos/bjp.png" alt="BJP" loading="lazy"/>
+        </a>
+        <a class="logo-carousel-item" href="https://studiodeia.in/" target="_blank" rel="noopener noreferrer" title="Studio Deia">
+          <img src="logos/studio-deia.png" alt="Studio Deia" loading="lazy"/>
+        </a>
+      </div>
+      <div class="logo-carousel-set" aria-hidden="true">
+        <div class="logo-carousel-item"><img src="logos/meshlinks.png" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/terrapy.png" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/encore-healthcare.png" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/ey.png" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/teama4s.png" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/gandhi-neru.svg" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/bjp.png" alt="" loading="lazy"/></div>
+        <div class="logo-carousel-item"><img src="logos/studio-deia.png" alt="" loading="lazy"/></div>
+      </div>
+    </div>
+  </section>
 
   <section class="section" id="team">
     <div class="section-head">
